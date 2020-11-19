@@ -58,11 +58,12 @@ Sub stockCheckAllSheets()
         'input ticker and vol total, calc yearly change and percent change
             ws.Cells((input_row), 10).Value = ticker
             ws.Cells((input_row), 11).Value = (end_close_value) - (start_open_value)
+            ws.Cells((input_row), 11).NumberFormat = "$#,##0.00"
             ws.Cells((input_row), 13).Value = vol_total
 
         'create if/then for percent change
         'if start value is zero, use 1 as denominator; elseif use regular formula
-        'format cells in both cases as percent    
+        'format cells in both cases as percent
             If (start_open_value = 0) Then
                 ws.Cells((input_row), 12).Value = (((end_close_value) - (start_open_value)) / 1)
                 ws.Cells((input_row), 12).NumberFormat = "0.00%"
@@ -155,5 +156,3 @@ Sub stockCheckAllSheets()
     Next
 
 End Sub
-
-
