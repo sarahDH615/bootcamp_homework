@@ -1,8 +1,10 @@
 Sub stockCheckAllSheets()
+    'create a wrap that allows the code to run on all worksheets
     For Each ws In Worksheets
     
     'create variables for start and end values
     Dim start_open_value As Double
+    'set start value to zero
     start_open_value = 0
 
     Dim end_close_value As Double
@@ -11,6 +13,7 @@ Sub stockCheckAllSheets()
     Dim ticker As String
 
     'create variable for volume total, set it to zero
+    'set to longlong b/c long caused error 6 overflow
     Dim vol_total As LongLong
     vol_total = 0
 
@@ -33,24 +36,33 @@ Sub stockCheckAllSheets()
     'm1 = cells(1, 13)
 
     'create loop
+    'dim rw as long b/c data set is v. long
     Dim rw As Long
     For rw = 2 To lastRow
         'create if/elseif to account for when rows change
+        'record start value, first vol, ticker, increment input_row up
         If (ws.Cells(rw, 1).Value <> ws.Cells((rw - 1), 1).Value) Then
             start_open_value = ws.Cells(rw, 3).Value
             vol_total = ws.Cells(rw, 7).Value
             input_row = input_row + 1
             ticker = ws.Cells(rw, 1).Value
+        'create else/if for when rows are the same
+        'add row's vol to the vol total
         ElseIf (ws.Cells(rw, 1).Value = ws.Cells((rw + 1), 1).Value) Then
             vol_total = vol_total + ws.Cells(rw, 7).Value
+        'when the last row with the ticker occurs, add close value, final vol value
         ElseIf (ws.Cells(rw, 1).Value <> ws.Cells((rw + 1), 1).Value) Then
             end_close_value = ws.Cells(rw, 6).Value
             vol_total = vol_total + ws.Cells(rw, 7).Value
         
+        'input ticker and vol total, calc yearly change and percent change
             ws.Cells((input_row), 10).Value = ticker
             ws.Cells((input_row), 11).Value = (end_close_value) - (start_open_value)
             ws.Cells((input_row), 13).Value = vol_total
-            
+
+        'create if/then for percent change
+        'if start value is zero, use 1 as denominator; elseif use regular formula
+        'format cells in both cases as percent    
             If (start_open_value = 0) Then
                 ws.Cells((input_row), 12).Value = (((end_close_value) - (start_open_value)) / 1)
                 ws.Cells((input_row), 12).NumberFormat = "0.00%"
@@ -61,19 +73,21 @@ Sub stockCheckAllSheets()
         End If
     Next rw
 
+'create new lastRow calc for the length of the ychange/%change table
     Dim lastRow1 As Long
     lastRow1 = ws.Cells(Rows.Count, 10).End(xlUp).Row
 
 'Bonus
 '_____________________________________________________
 'set variables for max increase, max decrease, max vol
- 'values themselves
+ 'values themselves - set to zero
         Dim max_inc As Double
         max_inc = 0
         
         Dim max_dec As Double
         max_dec = 0
         
+        'longlong b/c vol amounts are very large
         Dim max_vol As LongLong
         max_vol = 0
  'variables for the max val ticker names
@@ -90,12 +104,12 @@ Sub stockCheckAllSheets()
         ws.Range("p1").Value = "Ticker"
         ws.Range("q1").Value = "Value"
     
-'formatting text for max_inc and max_dec
+'formatting text for max_inc and max_dec as percentage
         ws.Range("q2:q3").NumberFormat = "0.00%"
     
 'end bonus chunk
 '___________________________________________________________________
-
+'create new for loop to do conditional formatting on y/%change list
     Dim rm As Long
     For rm = 2 To lastRow1
         'conditional formatting for yearly change
@@ -111,12 +125,14 @@ Sub stockCheckAllSheets()
 'start bonus chunk
 '____________________________________________________________________
  'create if/then for max vol
+ 'move down cells in y/%change list, see if they are greater than previous value for max_vol; if so, make it the new max_vol
         If (ws.Cells(rm, 13).Value) > max_vol Then
             max_vol = ws.Cells(rm, 13).Value
             max_vol_name = ws.Cells(rm, 10).Value
         End If
  
  'create if/elseif for max increase and decrease
+ 'move down cells in y/%change list, see if they are greater than previous value for max_inc/dec; if so, make it the new max_inc/dec
         If (ws.Cells(rm, 12).Value) > max_inc Then
             max_inc = ws.Cells(rm, 12).Value
             max_inc_name = ws.Cells(rm, 10).Value
@@ -127,7 +143,7 @@ Sub stockCheckAllSheets()
         
     Next rm
 
-'entering values for final max inc and dec
+'entering values for final max inc/dec and vol
     ws.Range("p2").Value = max_inc_name
     ws.Range("p3").Value = max_dec_name
     ws.Range("p4").Value = max_vol_name
