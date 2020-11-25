@@ -1,8 +1,7 @@
-# bootcamp_homework
-Place to store completed homework assignments
-### Contains:
-Homework 1: Kickstarter
+# Contains:
 
-Homework 2: VBA
+## Excel Workbook: Starterbook_edited.xlsx
+Contains work for homework and bonus material
 
-Homework 3: Python
+## Word Document: Kickstarter_DalleyHood.docx
+Contains answers for homework and bonus questions
