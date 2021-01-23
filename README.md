@@ -8,7 +8,8 @@
 * Starterbook_edited.xlsx: The goal of this excel workbook was to draw out trends from 4,000 past Kickstarter projects. The workbook can be broken into two stages:
 - Data Cleanup:
     - Campaigns sheet: 
-      _this sheet contains the source data, showing 4,000 Kickstarter campaigns,with their names, descriptions ('blurb'), goal amounts ('goal'), amount donated ('pledged'),_ _status of the campaign ('state'), the country of origin for the campaign, the currency used,_ _the date by which the campaign finished ('deadline'), _the_ _start_ _date_ _of_ _the_ _campaign_ _launched\_at'_ _whether the campaign was a 'staff pick',_ _or_ _was_ _'spotlighted', the number of people who donated_ _('backers\_count'),_ _and_ _the category/subcategory the campaign belongs to_
+
+      _this sheet contains the source data, showing 4,000 Kickstarter campaigns,with their names, descriptions ('blurb'), goal amounts ('goal'), amount donated ('pledged'), status of the campaign ('state'), the country of origin for the campaign, the currency used, the date by which the campaign finished ('deadline'), the start date of the campaign (launched\_at')whether the campaign was a 'staff pick', or was 'spotlighted', the number of people who donated ('backers\_count'), and the category/subcategory the campaign belongs to_
         - using conditional formatting in the 'state' column to show whether a  campaign is successful, failed, cancelled, or live
         - creating a new column, 'Percent Funded', as another way of measuring  campaign success, by showing how close a campaign is to meeting its funding goals
         - creating a new column, 'Average Donation', to show how much, on average, someone donates to a particular campaign
