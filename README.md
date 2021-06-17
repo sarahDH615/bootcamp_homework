@@ -31,7 +31,9 @@
         - percent success per sub-category, with conditional formatting
         - stacked pivot chart of the sub-category/state table
     - PT_Date (Pivot Table Date) sheet:
-        ![Date of Campaign vs. Campaign State](/images/dateVstate.png)
+        <p align="left">
+        <img width="850" alt='Date of Campaign vs. Campaign State' src="/images/dateVstate.png">
+        </p>
         - pivot table counting how many campaigns are in each state (successful, failed, cancelled, or live), by date created, which can be edited to display all, or a selected country's data
         - pivot chart of the state/date created table
         - table containing observations on pivot chart when breaking data down by year
@@ -43,7 +45,9 @@
         - pivot table showing status of campaigns by the amount requested ('goal')
         - pivot chart of goals/status table
     - Goals_Stats sheet:
-        ![Goals Stats Chart](/images/goalsStats.png)
+        <p align="center">
+        <img width="100%" alt='Goals Stats Chart' src="/images/goalsStats.png">
+        </p>
         - table showing the backers_count for successful and failed campaigns 
         - table showing summmary statistics on backers_count/campaign state table
 
