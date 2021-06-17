@@ -39,7 +39,7 @@
         - table containing observations on pivot chart when breaking data down by year
     - Goals_Status sheet:
         <p align="center">
-        <img height='400' alt='Goals Status Chart' src="/images/goalsTable.png">
+        <img height='300' alt='Goals Status Chart' src="/images/goalsTable.png">
         </p>
         - table showing status of campaigns by the amount requested ('goal'), and the percentage of each goal grouping that is in each state
     - Goals_Chart sheet:
