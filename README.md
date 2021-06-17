@@ -38,7 +38,9 @@
         - pivot chart of the state/date created table
         - table containing observations on pivot chart when breaking data down by year
     - Goals_Status sheet:
-        ![Goals Table with States](/images/goalsTable.png)
+        <p align="center">
+        <img width="850" height='600' alt='Goals Status Chart' src="/images/goalsTable.png">
+        </p>
         - table showing status of campaigns by the amount requested ('goal'), and the percentage of each goal grouping that is in each state
     - Goals_Chart sheet:
         ![Goals vs. Campaign State](/images/goalsVsuccessGraph.png)
@@ -46,7 +48,7 @@
         - pivot chart of goals/status table
     - Goals_Stats sheet:
         <p align="center">
-        <img width="100%" alt='Goals Stats Chart' src="/images/goalsStats.png">
+        <img width="70%" alt='Goals Stats Chart' src="/images/goalsStats.png">
         </p>
         - table showing the backers_count for successful and failed campaigns 
         - table showing summmary statistics on backers_count/campaign state table
